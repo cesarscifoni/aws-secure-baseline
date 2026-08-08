@@ -37,7 +37,7 @@ aws-secure-baseline/
 | Bloqueio de acesso público ao S3 em nível de conta | S3 | `iam-baseline` |
 | Encriptação padrão de volumes EBS | EBS | `iam-baseline` |
 | Alerta de orçamento mensal | AWS Budgets | `budget-alerts` |
-| Restrição de regiões autorizadas via IAM Deny | IAM Policy | `region-lockdown` |
+| Restrição de regiões autorizadas via IAM Deny ⚠️ | IAM Policy | `region-lockdown` |
 
 ### Regras do AWS Config
 
@@ -152,6 +152,18 @@ O flag `enabled` controla todos os módulos de uma vez — ao setar `false`, o T
 │  Budget Alert ────────────► E-mail (80% e 100%)      │
 └─────────────────────────────────────────────────────┘
 ```
+
+## Limitações conhecidas
+
+### Region Lockdown — cobertura parcial
+
+O módulo `region-lockdown` cria uma IAM Policy e a anexa ao grupo `RegionRestrictedUsers`. Isso significa que **apenas usuários IAM adicionados manualmente a esse grupo** ficam sujeitos à restrição de região.
+
+Roles, serviços AWS assumindo roles e usuários fora do grupo **não são afetados**.
+
+O bloqueio completo de conta — cobrindo todos os principais, incluindo roles e serviços — requer uma **SCP (Service Control Policy)** aplicada via AWS Organizations. SCPs são aplicadas no nível da OU/conta e não podem ser contornadas por nenhum principal, nem mesmo o root da conta.
+
+> Na vertente `standalone`, sem AWS Organizations, a SCP não é uma opção. O lockdown via IAM é o máximo possível nesse contexto. A vertente AFT (via Control Tower) implementará o bloqueio correto com SCP.
 
 ## Próximos passos
 
