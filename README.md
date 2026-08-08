@@ -103,27 +103,27 @@ O flag `enabled` controla todos os módulos de uma vez — ao setar `false`, o T
 
 ### CloudTrail — Trail multi-region ativo
 
-<!-- Insira screenshot aqui -->
+![CloudTrail](docs/print_trail.png)
 
 ### AWS Config — Regras de compliance
 
-<!-- Insira screenshot aqui -->
+![AWS Config](docs/print_config.png)
 
 ### GuardDuty — Detector ativo
 
-<!-- Insira screenshot aqui -->
+![GuardDuty](docs/print_guarduty.png)
 
 ### Security Hub — CIS + FSBP standards
 
-<!-- Insira screenshot aqui -->
+![Security Hub](docs/print_SecurityHub.png)
 
 ### IAM — Password Policy
 
-<!-- Insira screenshot aqui -->
+![IAM](docs/print_IAM.png)
 
 ### S3 — Buckets de logs (CloudTrail e Config)
 
-<!-- Insira screenshot aqui -->
+![S3](docs/print_S3.png)
 
 ## Arquitetura
 
